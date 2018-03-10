@@ -1,0 +1,261 @@
+1                                                          The SAS System                              10:44 Saturday, March 4, 2017
+
+NOTE: Unable to open SASUSER.REGSTRY. WORK.REGSTRY will be opened instead.
+NOTE: All registry changes will be lost at the end of the session.
+
+WARNING: Unable to copy SASUSER registry to WORK registry. Because of this, you will not see registry customizations during this 
+         session.
+NOTE: Unable to open SASUSER.PROFILE. WORK.PROFILE will be opened instead.
+NOTE: All profile changes will be lost at the end of the session.
+NOTE: Copyright (c) 2002-2012 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M3) 
+      Licensed to OKLAHOMA STATE UNIVERSITY - T&R SFA, Site 70080396.
+NOTE: This session is executing on the X64_8PRO  platform.
+
+
+
+NOTE: Updated analytical products:
+      
+      SAS/STAT 14.1
+      SAS/ETS 14.1
+      SAS/OR 14.1
+      SAS/IML 14.1
+      SAS/QC 14.1
+
+NOTE: Additional host information:
+
+ X64_8PRO WIN 6.2.9200  Workstation
+
+NOTE: SAS initialization used:
+      real time           0.29 seconds
+      cpu time            0.20 seconds
+      
+1          /*  Course data for the Bayesian Analyses Using SAS course */
+2          
+3          data sasuser.birth;
+4            input low mother_age mother_wt socio alcohol
+5                  prev_pretrm hist_hyp uterine_irr phy_visit;
+6            label low='Indicator for Birth Weight'
+7                  mother_age='Mother''s age'
+8                  mother_wt='Weight at Last Menstrual Period'
+9                  socio='Socio-Economic Status'
+10                 alcohol='Did the mother drink during pregnancy?'
+11                 hist_hyp='History of Hypertension'
+12                 prev_pretrm='Previous Preterm Labors'
+13                 uterine_irr='Uterine Irritability'
+14                 phy_visit='Physician Visit in 1st Trimester';
+15         cards;
+
+NOTE: The data set SASUSER.BIRTH has 189 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+205        ;
+2                                         The SAS System             10:44 Saturday, March 4, 2017
+
+206        run;
+207        
+208        data sasuser.methadone;
+209           input PatientID $ Clinic Status Time Prison Dose ;
+210        datalines;
+
+NOTE: The data set SASUSER.METHADONE has 238 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+449        ;
+450        run;
+451        
+452        data sasuser.pima;
+453           input number_preg glucose diastolic_bp skin_thickness body_mass
+454                 pedigree age diabetes;
+455        cards;
+
+NOTE: The data set SASUSER.PIMA has 532 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+988        ;
+989        run;
+990        
+991        data sasuser.toy;
+992           length toy $1;
+993           input toy $ adhesive $ pressure @@;
+994        datalines;
+
+NOTE: SAS went to a new line when INPUT statement reached past the end of a line.
+NOTE: The data set SASUSER.TOY has 21 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+1002       ;
+1003       run;
+1004       
+1005       data roots;
+1006       	input photo bap roots n;
+1007       	label bap='BAP concentration'
+1008       		  photo='Photoperiod'
+1009       	      roots='No. of roots'
+1010       		  ;
+1011       datalines;
+
+NOTE: The data set WORK.ROOTS has 110 observations and 4 variables.
+3                                         The SAS System             10:44 Saturday, March 4, 2017
+
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+1122       ;
+1123       run;
+1124       
+1125       proc sort data=roots;
+1126       	by photo bap;
+1127       run;
+
+NOTE: There were 110 observations read from the data set WORK.ROOTS.
+NOTE: The data set WORK.ROOTS has 110 observations and 4 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+1128       
+1129       data sasuser.roots(drop=i n);
+1130       	set roots;
+1131       	do i = 1 to n;
+1132       		output;
+1133       	end;
+1134       run;
+
+NOTE: There were 110 observations read from the data set WORK.ROOTS.
+NOTE: The data set SASUSER.ROOTS has 270 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+1135       
+1136       data sasuser.bakery;
+1137          input flour $ surf $ volume;
+1138       datalines;
+
+NOTE: The data set SASUSER.BAKERY has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+1151         ;
+1152       run;
+1153       
+1154       data sasuser.crossover;
+1155          input patient $ sequence $ visit $ drug $ changehr group $;
+1156       datalines;
+
+NOTE: The data set SASUSER.CROSSOVER has 72 observations and 6 variables.
+4                                         The SAS System             10:44 Saturday, March 4, 2017
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+1229       ;
+1230       run;
+1231       
+1232       data sasuser.magnesium;
+1233          input trial rt nt rc nc;
+1234       datalines;
+
+NOTE: The data set SASUSER.MAGNESIUM has 9 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+1244       ;
+1245       run;
+1246       
+1247       data sasuser.perinatal;
+1248          input trial rt nt rc nc;
+1249       datalines;
+
+NOTE: The data set SASUSER.PERINATAL has 9 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+1259       ;
+1260       run;
+1261       
+1262       data sasuser.fitness;
+1263           input @1 Name $8. @10 Gender $1. @12 RunTime 5.2 @18 Age 2. @21 Weight 5.2
+1264                 @27 Oxygen_Consumption 5.2 @33 Run_Pulse 3.
+1265                 @37 Rest_Pulse 2. @40 Maximum_Pulse 3.;
+1266       datalines;
+
+NOTE: The data set SASUSER.FITNESS has 31 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+1298       ;
+1299       run;
+1300       
+1301       data sasuser.new_fitness;
+1302         input runtime age weight run_pulse rest_pulse;
+1303       datalines;
+
+5                                         The SAS System             10:44 Saturday, March 4, 2017
+
+NOTE: The data set SASUSER.NEW_FITNESS has 5 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+1309       ;
+1310       run;
+1311       
+1312       data sasuser.miss_birth;
+1313         input low mother_age mother_wt socio alcohol
+1314               prev_pretrm hist_hyp uterine_irr phy_visit;
+1315         label low='Indicator for Birth Weight'
+1316               mother_age='Mother''s age'
+1317               mother_wt='Weight at Last Menstrual Period'
+1318               socio='Socio-Economic Status'
+1319               alcohol='Did the mother drink during pregnancy?'
+1320               hist_hyp='History of Hypertension'
+1321               prev_pretrm='Previous Preterm Labors'
+1322               uterine_irr='Uterine Irritability'
+1323               phy_visit='Physician Visit in 1st Trimester';
+1324       cards;
+
+NOTE: The data set SASUSER.MISS_BIRTH has 189 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+1514       ;
+1515       run;
+1516       
+1517       
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           0.48 seconds
+      cpu time            0.34 seconds
+      
